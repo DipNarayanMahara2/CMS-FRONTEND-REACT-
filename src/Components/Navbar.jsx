@@ -12,10 +12,7 @@ const Navbar = () => {
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 {/* Logo */}
-                <Link
-                    to="/"
-                    className="flex items-center space-x-3 rtl:space-x-reverse"
-                >
+                <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img
                         src="https://flowbite.com/docs/images/logo.svg"
                         className="h-8"
@@ -25,6 +22,32 @@ const Navbar = () => {
                         BlogCMS
                     </span>
                 </Link>
+
+                {/* Search Box - Desktop Only */}
+                <div className="hidden md:block  md:mx-6 w-1/4">
+                    <div className="relative">
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                        />
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg
+                                className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
 
                 {/* Toggle Button */}
                 <button
@@ -52,8 +75,7 @@ const Navbar = () => {
 
                 {/* Menu Links */}
                 <div
-                    className={`${isMenuOpen ? "block" : "hidden"
-                        } w-full md:flex md:w-auto md:order-1`}
+                    className={`${isMenuOpen ? "block" : "hidden"} w-full md:flex md:w-auto md:order-1`}
                 >
                     <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
