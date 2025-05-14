@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Cards = () => {
     return (
         <article className="cursor-pointer group relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-full sm:w-96 hover:shadow-lg transition-shadow duration-300">
@@ -17,12 +19,12 @@ const Cards = () => {
                 </p>
             </div>
             <div className="px-4 pb-4 pt-0 mt-2">
-                <button
+                <Link to='/blog/single'
                     className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                     type="button"
                 >
                     Read article
-                </button>
+                </Link>
             </div>
         </article>
     );
