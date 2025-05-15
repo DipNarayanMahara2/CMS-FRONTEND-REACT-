@@ -1,6 +1,9 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Cards = () => {
+const Cards = ({ blog }) => {
+
     return (
         <article className="cursor-pointer group relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-full sm:w-96 hover:shadow-lg transition-shadow duration-300">
             <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
@@ -12,10 +15,12 @@ const Cards = () => {
             </div>
             <div className="p-4">
                 <h6 className="mb-2 text-slate-800 text-xl font-semibold">
-                    Successful Seed Round
+                    {blog.title}
                 </h6>
                 <p className="text-slate-600 leading-normal font-light">
-                    We are thrilled to announce the completion of our seed round, securing $2M in investment to fuel product development and market expansion.
+                    {blog.description.length > 50
+                        ? `${blog.description.slice(0, 50)}....`
+                        : blog.description}
                 </p>
             </div>
             <div className="px-4 pb-4 pt-0 mt-2">
