@@ -19,7 +19,6 @@ const BlogForm = ({ type }) => {
         // Api call to create a new blog
 
         const response = await axios.post("http://localhost:3000/createBlog", data)
-        console.log(response);
 
         if (response.status === 201) {
             navigate("/")
