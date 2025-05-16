@@ -12,7 +12,7 @@ const Home = () => {
         try {
             const response = await axios.get("http://localhost:3000/blogs");
             if (response.status === 200) {
-                setBlogs(response.data.data);
+                setBlogs(response.data.data.reverse());
             } else {
                 console.error("Error fetching data:", response.status);
             }
