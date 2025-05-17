@@ -1,16 +1,27 @@
 import axios from 'axios';
+import { useState } from 'react';
 // import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const BlogForm = ({ type }) => {
     const navigate = useNavigate();
 
+    const [data, setData] = useState({
+        title: "",
+        subTitle: "",
+        description: ""
+    })
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setData({
+            ...data,
+            [name]: value
+        })
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-
-        const data = Object.fromEntries(formData)
 
         // Api call to create a new blog
 
@@ -43,7 +54,7 @@ const BlogForm = ({ type }) => {
                                 className="bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Type product name"
                                 required
-                            // onChange={handleChange}
+                                onChange={handleChange}
                             // onChange={(e) => { setTitle(e.target.value) }}
                             />
                         </div>
@@ -56,7 +67,7 @@ const BlogForm = ({ type }) => {
                                 className="bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Subtitle"
                                 required
-                            // onChange={handleChange}
+                                onChange={handleChange}
                             // onChange={(e) => { setSubTitle(e.target.value) }}
                             />
                         </div>
@@ -89,7 +100,7 @@ const BlogForm = ({ type }) => {
                                 rows="6"
                                 className="block p-2.5 w-full text-base text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Your description here"
-                            // onChange={handleChange}
+                                onChange={handleChange}
                             // onChange={(e) => { setDescription(e.target.value) }}
                             ></textarea>
                         </div>
