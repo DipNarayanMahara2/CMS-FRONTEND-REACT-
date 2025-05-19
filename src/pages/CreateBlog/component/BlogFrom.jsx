@@ -3,7 +3,7 @@ import { useState } from 'react';
 // import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const BlogForm = ({ type }) => {
+const BlogForm = ({ type, blogId }) => {
     const navigate = useNavigate();
 
     const [data, setData] = useState({
@@ -11,7 +11,6 @@ const BlogForm = ({ type }) => {
         subTitle: "",
         description: ""
     })
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData({
@@ -23,18 +22,33 @@ const BlogForm = ({ type }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Api call to create a new blog
+        if (type === "Update") {
+            try {
+                const response = await axios.patch(`http://localhost:3000/updateBlog/${blogId}`, data)
+                if (response.status === 200) {
+                    navigate(`/blog/${blogId}`)
+                }
 
-        try {
-            const response = await axios.post("http://localhost:3000/createBlog", data)
+            } catch (error) {
+                console.error("Error updating blog:", error);
 
-            if (response.status === 201) {
-                navigate("/")
             }
-        } catch (error) {
-            console.error("Error creating blog:", error);
 
+        } else {
+
+            // Api call to create a new blog
+            try {
+                const response = await axios.post("http://localhost:3000/createBlog", data)
+
+                if (response.status === 201) {
+                    navigate("/")
+                }
+            } catch (error) {
+                console.error("Error creating blog:", error);
+
+            }
         }
+
     }
 
     return (

@@ -24,8 +24,6 @@ const Home = () => {
         fetchData();
     }, []);
 
-    console.log(blogs, "Blogs");
-
 
     return (
         <Layout>
@@ -34,7 +32,7 @@ const Home = () => {
                 {
                     blogs.length > 0 ? (
                         blogs.map((blogs) => {
-                            return <Cards blog={blogs} />
+                            return <Cards blog={blogs} key={blogs._id} />
                         })
                     ) : (
                         <div className='flex justify-center items-center'>

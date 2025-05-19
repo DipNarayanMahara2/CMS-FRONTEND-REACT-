@@ -15,7 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/blog/add" element={<CreateBlog />} />
-        <Route path="/blog/update" element={<UpdateBlog />} />
+        <Route path="/blog/update/:id" element={<UpdateBlog />} />
         <Route path="/blog/:id" element={<SingleBlog />} />
         {/* Add more routes here */}
       </Routes>
